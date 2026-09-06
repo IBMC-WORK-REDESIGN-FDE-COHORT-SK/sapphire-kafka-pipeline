@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TemperatureReadingEvent",
+  "description": "Event schema for body temperature measurement stream",
+  "type": "object",
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "value": {
+      "type": "number",
+      "minimum": 30.0,
+      "maximum": 113.0
+    },
+    "unit": {
+      "type": "string",
+      "enum": ["celsius", "fahrenheit", "C", "F"]
+    },
+    "normalizedValueCelsius": {
+      "type": "number",
+      "minimum": 30.0,
+      "maximum": 45.0
+    },
+    "sourceDeviceId": {
+      "type": "string"
+    },
+    "measurementMethod": {
+      "type": "string",
+      "enum": ["oral", "tympanic", "axillary", "forehead", "core"]
+    }
+  },
+  "required": ["eventId", "userId", "timestamp", "value", "unit", "normalizedValueCelsius"]
+}
